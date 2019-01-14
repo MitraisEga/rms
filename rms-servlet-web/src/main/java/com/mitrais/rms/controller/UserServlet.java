@@ -20,10 +20,6 @@ public class UserServlet extends AbstractController
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
     	if(authenticationCheck(req.getSession())) {
-    		
-    	
-    	
-    	
         String path = getTemplatePath(req.getServletPath()+req.getPathInfo());
 
         if ("/list".equalsIgnoreCase(req.getPathInfo())){
@@ -35,7 +31,7 @@ public class UserServlet extends AbstractController
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
     	}else {
-    		resp.
+    		resp.sendRedirect(req.getContextPath()+"/login");
     	}
     }
 }
